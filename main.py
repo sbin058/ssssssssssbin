@@ -31,44 +31,114 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-NAVY = "#17365D"
-BLUE = "#2878B5"
-SKY = "#77BDE8"
-RED = "#D94F55"
-ORANGE = "#F0A34A"
-GREEN = "#3E9B76"
-GRAY = "#64748B"
-PALE = "#F3F7FB"
+NAVY = "#101B3D"
+BLUE = "#5574F7"
+SKY = "#42D6E8"
+RED = "#FF5C7A"
+ORANGE = "#FFB454"
+GREEN = "#35C99A"
+PURPLE = "#9A72FF"
+GRAY = "#91A0BC"
+PALE = "#F3F6FF"
 
 st.markdown(
     """
     <style>
-    .stApp { background: #F4F7FB; }
-    [data-testid="stSidebar"] { background: #EAF0F7; }
-    h1, h2, h3 { color: #17365D; }
+    :root {
+        --ink: #111A36;
+        --muted: #71809F;
+        --line: rgba(126, 149, 206, .20);
+        --panel: rgba(255,255,255,.90);
+    }
+    .stApp {
+        background:
+          radial-gradient(circle at 4% 0%, rgba(85,116,247,.15), transparent 28%),
+          radial-gradient(circle at 94% 8%, rgba(66,214,232,.13), transparent 25%),
+          linear-gradient(135deg, #F4F7FF 0%, #EEF4FF 48%, #F8FAFF 100%);
+        color: var(--ink);
+    }
+    [data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #101B3D 0%, #172B58 55%, #203B70 100%);
+        border-right: 1px solid rgba(255,255,255,.12);
+    }
+    [data-testid="stSidebar"] * { color: #F3F6FF !important; }
+    [data-testid="stSidebar"] [data-baseweb="radio"] label {
+        border-radius: 11px; padding: 8px 10px; margin: 3px 0;
+        background: rgba(255,255,255,.035);
+    }
+    [data-testid="stSidebar"] [data-baseweb="radio"] label:hover {
+        background: rgba(95,134,255,.24);
+    }
+    h1, h2, h3, h4 { color: #15254C; letter-spacing: -.02em; }
+    h2 { margin-top: .5rem; }
     [data-testid="stMetric"] {
-        background: #FFFFFF;
-        border: 1px solid #DCE5EF;
-        border-radius: 12px;
-        padding: 12px 14px;
+        background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(239,244,255,.92));
+        border: 1px solid rgba(98,126,202,.20);
+        border-radius: 18px; padding: 17px 18px;
+        box-shadow: 0 12px 28px rgba(35,57,112,.07);
+        min-height: 116px;
     }
-    div[data-testid="stMetric"] label { color: #526579; }
+    [data-testid="stMetricLabel"] { color: #68799C !important; font-weight: 650; }
+    [data-testid="stMetricValue"] { color: #172A59 !important; font-weight: 850; }
+    [data-testid="stMetricDelta"] { font-weight: 700; }
     .hero {
-        background: linear-gradient(110deg, #17365D 0%, #285D88 100%);
-        color: white;
-        border-radius: 18px;
-        padding: 24px 28px;
-        margin-bottom: 12px;
+        position: relative; overflow: hidden;
+        background: linear-gradient(112deg, #101B3D 0%, #263E87 53%, #3B61C8 100%);
+        color: white; border: 1px solid rgba(255,255,255,.18);
+        border-radius: 25px; padding: 29px 32px 27px 32px;
+        margin: 2px 0 15px 0;
+        box-shadow: 0 20px 45px rgba(33,55,121,.22);
     }
-    .hero h1 { color: white !important; margin: 0 0 6px 0; }
-    .hero p { color: #EAF3FB; margin: 0; font-size: 1rem; }
-    .small-note { color: #64748B; font-size: 0.88rem; }
+    .hero:after {
+        content: ""; position: absolute; right: -45px; top: -110px;
+        width: 330px; height: 330px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(66,214,232,.30), rgba(154,114,255,.12) 52%, transparent 70%);
+    }
+    .hero h1 { color: white !important; margin: 0 0 8px 0; font-size: 2.25rem; font-weight: 900; }
+    .hero p { color: #E5EDFF; margin: 0; font-size: 1rem; line-height: 1.65; max-width: 880px; }
+    .hero-kicker { color: #8FEAF1; font-size: .76rem; font-weight: 800; letter-spacing: .18em; margin-bottom: 7px; }
+    .hero-chip {
+        display: inline-block; margin: 14px 7px 0 0; padding: 6px 11px;
+        color: #F7FAFF; background: rgba(255,255,255,.12);
+        border: 1px solid rgba(255,255,255,.18); border-radius: 30px;
+        font-size: .77rem; font-weight: 650;
+    }
+    .section-label {
+        color: #5574F7; font-size: .72rem; font-weight: 850;
+        letter-spacing: .16em; text-transform: uppercase; margin-bottom: 3px;
+    }
+    .glass-card {
+        background: rgba(255,255,255,.82); border: 1px solid rgba(108,132,199,.20);
+        border-radius: 17px; padding: 17px 19px; margin: 5px 0 14px 0;
+        box-shadow: 0 10px 28px rgba(33,55,121,.055);
+    }
     .insight {
-        background: white;
-        border-left: 5px solid #2878B5;
-        border-radius: 8px;
-        padding: 12px 16px;
-        margin: 8px 0 14px 0;
+        background: linear-gradient(115deg, rgba(255,255,255,.97), rgba(239,246,255,.95));
+        border: 1px solid rgba(85,116,247,.18); border-left: 5px solid #5574F7;
+        border-radius: 14px; padding: 15px 18px; margin: 9px 0 16px 0;
+        box-shadow: 0 8px 22px rgba(35,57,112,.05); line-height: 1.8;
+    }
+    .small-note { color: #71809F; font-size: .86rem; }
+    div[data-testid="stExpander"] {
+        background: rgba(255,255,255,.73); border: 1px solid rgba(108,132,199,.18);
+        border-radius: 14px;
+    }
+    .stButton > button, .stDownloadButton > button {
+        border: 0; border-radius: 12px; color: white; font-weight: 750;
+        background: linear-gradient(100deg, #5574F7, #765EF3 60%, #9A72FF);
+        box-shadow: 0 7px 17px rgba(85,116,247,.22);
+    }
+    .stButton > button:hover, .stDownloadButton > button:hover {
+        color: white; border: 0; filter: brightness(1.06); transform: translateY(-1px);
+    }
+    [data-baseweb="select"] > div, [data-baseweb="input"] > div {
+        border-radius: 11px !important; border-color: rgba(98,126,202,.27) !important;
+    }
+    div[data-testid="stDataFrame"] { border: 1px solid rgba(98,126,202,.18); border-radius: 13px; overflow: hidden; }
+    hr { border-color: rgba(98,126,202,.18); }
+    @media (max-width: 700px) {
+        .hero { padding: 22px 20px; }
+        .hero h1 { font-size: 1.65rem; }
     }
     </style>
     """,
@@ -94,6 +164,7 @@ school_zone = pd.DataFrame(
     columns=["발생년", "어린이보호구역여부", "사고건수", "사망자수", "중상자수", "경상자수", "부상신고자수"],
 )
 school_zone["부상자수"] = school_zone["중상자수"] + school_zone["경상자수"] + school_zone["부상신고자수"]
+school_zone["사망자수_사고100건당"] = school_zone["사망자수"] / school_zone["사고건수"] * 100
 
 # [자료 B] 한국도로교통공단_시간대별 교통사고 통계_20251231
 # 데이터셋 ID: 15087037 / 공개 미리보기 12행 전체
@@ -116,6 +187,7 @@ hourly = pd.DataFrame(
 )
 hourly["부상자수"] = hourly["중상자수"] + hourly["경상자수"] + hourly["부상신고자수"]
 hourly["사망자수_사고100건당"] = hourly["사망자수"] / hourly["사고건수"] * 100
+hourly["부상자수_사고100건당"] = hourly["부상자수"] / hourly["사고건수"] * 100
 
 # 시간대 구분은 그래프에서 읽기 쉽도록 4개 구간으로 묶었습니다.
 def classify_time(time_text):
@@ -164,6 +236,8 @@ day_night = pd.DataFrame(
 )
 day_night["부상자수"] = day_night["중상자수"] + day_night["경상자수"] + day_night["부상신고자수"]
 day_night["월"] = day_night["발생월"].astype(int)
+day_night["사망자수_사고100건당"] = day_night["사망자수"] / day_night["사고건수"] * 100
+day_night["부상자수_사고100건당"] = day_night["부상자수"] / day_night["사고건수"] * 100
 
 # [자료 D] 한국도로교통공단_사고유형별 교통사고 통계_20251231
 # 데이터셋 ID: 15070282 / 공개 미리보기에서 확인한 보행자 사고 4개 하위 유형만 사용
@@ -178,6 +252,7 @@ pedestrian_types = pd.DataFrame(
     columns=["보행자 사고 하위 유형", "사고건수", "사망자수", "중상자수", "경상자수", "부상신고자수"],
 )
 pedestrian_types["부상자수"] = pedestrian_types["중상자수"] + pedestrian_types["경상자수"] + pedestrian_types["부상신고자수"]
+pedestrian_types["사망자수_사고100건당"] = pedestrian_types["사망자수"] / pedestrian_types["사고건수"] * 100
 
 # [자료 E] 한국도로교통공단_사고유형별 월별 교통사고 통계_20251231
 # 데이터셋 ID: 15070290 / 200행 중 공개 미리보기에서 확인한 '횡단중' 월별 12행만 사용
@@ -203,6 +278,7 @@ pedestrian_crossing_month["부상자수"] = (
     + pedestrian_crossing_month["경상자수"]
     + pedestrian_crossing_month["부상신고자수"]
 )
+pedestrian_crossing_month["사망자수_사고100건당"] = pedestrian_crossing_month["사망자수"] / pedestrian_crossing_month["사고건수"] * 100
 
 
 # -----------------------------------------------------------------------------
@@ -274,7 +350,122 @@ def download_csv(dataframe, file_name, button_label="CSV 다운로드", key=None
 
 
 # -----------------------------------------------------------------------------
-# 5. 사이드바 메뉴 및 제목
+# 5. 사용자 선택형 그래프 탐색실
+# -----------------------------------------------------------------------------
+EXPLORER_DATA = {
+    "어린이보호구역 어린이 사고 (2021~2025)": school_zone,
+    "전국 시간대별 교통사고 (2025)": hourly,
+    "전국 월별 주간·야간 사고 (2025)": day_night,
+    "보행자 사고 유형 미리보기 (2025)": pedestrian_types,
+    "횡단 중 보행자 사고 월별 (2025)": pedestrian_crossing_month,
+}
+
+
+def render_chart_explorer():
+    """사용자가 그래프 유형과 축 변수를 바꾸어 직접 탐색합니다."""
+    st.markdown('<div class="section-label">INTERACTIVE DATA LAB</div>', unsafe_allow_html=True)
+    st.header("🎛️ 그래프 탐색실")
+    st.write("분석할 데이터부터 고르고 X축·Y축·색상·크기 변수를 직접 바꿔 보세요. 선택을 바꾸면 그래프가 즉시 다시 그려집니다.")
+
+    selected_name = st.selectbox("① 분석할 데이터 선택", list(EXPLORER_DATA.keys()), key="explorer_dataset")
+    df = EXPLORER_DATA[selected_name].copy()
+    numeric_cols = df.select_dtypes(include="number").columns.tolist()
+    if not numeric_cols:
+        st.warning("이 자료에는 그래프로 표현할 숫자형 열이 없습니다.")
+        return
+
+    col_a, col_b, col_c = st.columns([1, 1, 1])
+    with col_a:
+        chart_type = st.selectbox("② 그래프 종류", ["선 그래프", "막대그래프", "산점도", "히트맵"], key="explorer_chart_type")
+    with col_b:
+        metric = st.selectbox("③ 분석 지표(Y 또는 색상값)", numeric_cols, index=0, key="explorer_metric")
+    with col_c:
+        sort_order = st.selectbox("④ 정렬", ["원래 순서", "오름차순", "내림차순"], key="explorer_sort")
+
+    st.markdown('<div class="glass-card"><b>축 및 시각화 변수 설정</b><br><span class="small-note">히트맵에서는 X축·Y축에 범주 변수를, 색상값에는 숫자 지표를 선택합니다.</span></div>', unsafe_allow_html=True)
+
+    if chart_type == "히트맵":
+        # 히트맵의 행/열은 적절한 개수의 범주값을 가진 열에서 고릅니다.
+        category_cols = []
+        for col in df.columns:
+            if col == metric:
+                continue
+            nunique = df[col].nunique(dropna=True)
+            if 1 < nunique <= 30:
+                category_cols.append(col)
+        if len(category_cols) < 2:
+            st.info("이 데이터는 히트맵을 만들 범주형 변수가 2개 이상 필요합니다. 다른 데이터셋을 선택해 보세요.")
+            return
+        h1, h2, h3 = st.columns(3)
+        with h1:
+            row_var = st.selectbox("히트맵 Y축(행)", category_cols, index=0, key="explorer_heat_row")
+        with h2:
+            col_choices = [c for c in category_cols if c != row_var]
+            col_var = st.selectbox("히트맵 X축(열)", col_choices, index=0, key="explorer_heat_col")
+        with h3:
+            agg = st.selectbox("셀 값 집계", ["합계", "평균", "최댓값"], key="explorer_heat_agg")
+        agg_map = {"합계": "sum", "평균": "mean", "최댓값": "max"}
+        work = df.copy()
+        work[row_var] = work[row_var].astype(str)
+        work[col_var] = work[col_var].astype(str)
+        pivot = work.pivot_table(index=row_var, columns=col_var, values=metric, aggfunc=agg_map[agg], fill_value=0)
+        fig = go.Figure(data=go.Heatmap(
+            z=pivot.values,
+            x=[str(x) for x in pivot.columns],
+            y=[str(y) for y in pivot.index],
+            colorscale="Turbo",
+            colorbar=dict(title=metric),
+            hovertemplate=f"{row_var}: %{{y}}<br>{col_var}: %{{x}}<br>{metric}: %{{z:,.1f}}<extra></extra>",
+        ))
+        fig.update_layout(title=f"{selected_name} · {metric} {agg}", xaxis_title=col_var, yaxis_title=row_var)
+        st.plotly_chart(style_chart(fig, 500), use_container_width=True)
+        st.caption("히트맵의 색이 진할수록 선택한 집계 지표의 값이 큽니다. 0은 실제 0이거나 해당 조합의 자료가 없는 경우일 수 있으므로 원본 표도 함께 확인하세요.")
+        st.dataframe(pivot.reset_index(), use_container_width=True, hide_index=True)
+        return
+
+    # 선/막대/산점도는 X/Y축과 색상 구분을 모두 직접 조절할 수 있습니다.
+    x_candidates = df.columns.tolist()
+    d1, d2, d3, d4 = st.columns([1, 1, 1, 1])
+    with d1:
+        x_default = next((i for i, c in enumerate(x_candidates) if not pd.api.types.is_numeric_dtype(df[c])), 0)
+        x_axis = st.selectbox("X축 변수", x_candidates, index=x_default, key="explorer_x_axis")
+    with d2:
+        y_default = numeric_cols.index(metric) if metric in numeric_cols else 0
+        y_axis = st.selectbox("Y축 변수", numeric_cols, index=y_default, key="explorer_y_axis")
+    color_options = ["구분 없음"] + [c for c in df.columns if c not in [x_axis, y_axis]]
+    with d3:
+        color_axis = st.selectbox("색상으로 구분", color_options, key="explorer_color_axis")
+    size_options = ["사용 안 함"] + [c for c in numeric_cols if c not in [y_axis]]
+    with d4:
+        size_axis = st.selectbox("점 크기(산점도)", size_options, key="explorer_size_axis")
+
+    plot_df = df.copy()
+    if sort_order != "원래 순서":
+        plot_df = plot_df.sort_values(x_axis, ascending=(sort_order == "오름차순"))
+    color_arg = None if color_axis == "구분 없음" else color_axis
+
+    labels = {x_axis: x_axis, y_axis: y_axis}
+    if chart_type == "선 그래프":
+        fig = px.line(plot_df, x=x_axis, y=y_axis, color=color_arg, markers=True, hover_data=plot_df.columns.tolist(), labels=labels)
+    elif chart_type == "막대그래프":
+        fig = px.bar(plot_df, x=x_axis, y=y_axis, color=color_arg, barmode="group", hover_data=plot_df.columns.tolist(), labels=labels)
+    else:
+        size_arg = None if size_axis == "사용 안 함" else size_axis
+        fig = px.scatter(plot_df, x=x_axis, y=y_axis, color=color_arg, size=size_arg, hover_data=plot_df.columns.tolist(),
+                         size_max=34, labels=labels, opacity=.82)
+        fig.update_traces(marker=dict(line=dict(width=1, color="white")))
+    fig.update_layout(title=f"{selected_name} · {y_axis} vs {x_axis}", xaxis_title=x_axis, yaxis_title=y_axis)
+    st.plotly_chart(style_chart(fig, 500), use_container_width=True)
+
+    if chart_type == "산점도":
+        st.caption("점 하나는 원자료의 한 행입니다. 점의 위치·크기·색상은 선택한 변수의 값을 나타내며, 상관관계가 원인과 결과를 증명하지는 않습니다.")
+    st.markdown("#### 선택한 데이터 원본")
+    st.dataframe(df, use_container_width=True, hide_index=True)
+    download_csv(df, "선택한_교통사고_데이터.csv", key="explorer_download")
+
+
+# -----------------------------------------------------------------------------
+# 6. 사이드바 메뉴 및 제목
 # -----------------------------------------------------------------------------
 with st.sidebar:
     st.markdown("## 🚦 분석 메뉴")
@@ -282,6 +473,7 @@ with st.sidebar:
         "보고 싶은 분석을 선택하세요.",
         [
             "🏠 한눈에 보기",
+            "🎛️ 그래프 탐색실",
             "⏰ 시간대·주야별 분석",
             "🚶 보행자 사고 분석",
             "🏫 어린이보호구역 분석",
@@ -292,16 +484,22 @@ with st.sidebar:
     )
     st.divider()
     st.markdown("**분석 기준**")
-    st.caption("한국도로교통공단 2025년 기준 공개 통계")
+    st.caption("한국도로교통공단·한국도로공사 공개 통계")
     st.caption("앱 내장 데이터 · 업로드 불필요")
-    st.caption("마지막 데이터 확인: 2026년 11월")
+    st.caption("X/Y축 직접 선택 · 산점도 · 히트맵")
+    st.caption("데이터 기준: 각 원본별 표기")
 
 st.markdown(
     f"""
     <div class="hero">
+        <div class="hero-kicker">TRAFFIC SAFETY DATA LAB · PUBLIC DATA</div>
         <h1>{APP_TITLE}</h1>
-        <p>공공 교통사고 통계를 시각화해 사고가 집중되는 시간과 유형을 찾고,
-        학생들의 안전한 통학 환경을 생각해 보는 데이터 분석 대시보드</p>
+        <p>교통사고 공공데이터를 여러 시각으로 탐색하고, 사고가 집중되는 시간·유형·환경을 파악해
+        더 안전한 통학 환경을 고민하는 인터랙티브 분석 대시보드</p>
+        <span class="hero-chip">📊 사고 통계 시각화</span>
+        <span class="hero-chip">🎛️ X·Y축 직접 선택</span>
+        <span class="hero-chip">🌈 산점도 · 히트맵</span>
+        <span class="hero-chip">📚 공공데이터포털 기반</span>
     </div>
     """,
     unsafe_allow_html=True,
@@ -378,7 +576,14 @@ if menu == "🏠 한눈에 보기":
 
 
 # -----------------------------------------------------------------------------
-# 7. 메뉴 2: 시간대·주야별 분석
+# 7. 메뉴 2: 직접 조절하는 그래프 탐색실
+# -----------------------------------------------------------------------------
+elif menu == "🎛️ 그래프 탐색실":
+    render_chart_explorer()
+
+
+# -----------------------------------------------------------------------------
+# 8. 메뉴 3: 시간대·주야별 분석
 # -----------------------------------------------------------------------------
 elif menu == "⏰ 시간대·주야별 분석":
     st.header("⏰ 언제 사고가 많이 발생할까?")
@@ -667,13 +872,16 @@ elif menu == "📚 데이터 출처·원본 확인":
 
     sources = pd.DataFrame(
         [
-            ["15118850", "최근 5년 어린이보호구역 내 12세 이하 어린이 교통사고 통계", "2021~2025", "5행 중 5행", "연도별 스쿨존 어린이 사고"],
-            ["15087037", "시간대별 교통사고 통계", "2025", "12행 중 12행", "2시간 단위 사고 발생·피해 현황"],
-            ["15070318", "월별 주야별 교통사고 통계", "2025", "24행 중 24행", "월별 주간·야간 사고 비교"],
-            ["15070282", "사고유형별 교통사고 통계", "2025", "18행 중 미리보기 4행", "보행자 하위 유형 4개 비교"],
-            ["15070290", "사고유형별 월별 교통사고 통계", "2025", "200행 중 미리보기 12행", "횡단 중 사고의 월별 추이"],
+            ["15118850", "최근 5년 어린이보호구역 내 12세 이하 어린이 교통사고 통계", "2021~2025", "공개 미리보기 5행 전체", "연도별 스쿨존 어린이 사고"],
+            ["15087037", "시간대별 교통사고 통계", "2025", "공개 미리보기 12행 전체", "2시간 단위 사고·피해 현황"],
+            ["15070318", "월별 주야별 교통사고 통계", "2025", "공개 미리보기 24행 전체", "월별 주간·야간 사고 비교"],
+            ["15070282", "사고유형별 교통사고 통계", "2025", "전체 18행 중 미리보기 4행", "보행자 사고 하위 유형 비교"],
+            ["15070290", "사고유형별 월별 교통사고 통계", "2025", "전체 200행 중 미리보기 12행", "횡단 중 사고의 월별 추이"],
+            ["15045638", "한국도로공사 고속도로 교통사고통계", "2000~2024", "포털 전체 26행 / 값 미리보기 미확인", "장기 추세 후보·원본 링크 제공"],
+            ["15070271", "도로종류별 월별 교통사고 통계", "2025", "전체 84행 / 값 미리보기 미확인", "도로종류별 차이 분석 후보"],
+            ["15070339", "최근 5년 전국 교통사고 통계", "최근 5년", "CSV 스키마 확인 / 값 미리보기 미확인", "전국 연도별 사고·사망·부상 추이 후보"],
         ],
-        columns=["데이터셋 ID", "데이터 이름", "기준 시점", "사용 범위", "앱에서 활용한 내용"],
+        columns=["데이터셋 ID", "데이터 이름", "기준 시점", "확인 범위", "앱에서 활용한 내용"],
     )
     st.dataframe(sources, use_container_width=True, hide_index=True)
 
@@ -683,6 +891,35 @@ elif menu == "📚 데이터 출처·원본 확인":
     st.markdown("- [월별 주야별 교통사고 통계 (15070318)](https://www.data.go.kr/data/15070318/fileData.do)")
     st.markdown("- [사고유형별 교통사고 통계 (15070282)](https://www.data.go.kr/data/15070282/fileData.do)")
     st.markdown("- [사고유형별 월별 교통사고 통계 (15070290)](https://www.data.go.kr/data/15070290/fileData.do)")
+    st.markdown("- [고속도로 교통사고통계 2000~2024 (15045638)](https://www.data.go.kr/data/15045638/fileData.do)")
+    st.markdown("- [도로종류별 월별 교통사고 통계 (15070271)](https://www.data.go.kr/data/15070271/fileData.do)")
+    st.markdown("- [최근 5년 전국 교통사고 통계 (15070339)](https://www.data.go.kr/data/15070339/fileData.do)")
+
+    st.markdown("### 🕰️ 2020년 이전 데이터: 장기 추세 데이터 발견")
+    st.markdown(
+        "**한국도로공사_교통사고통계 (데이터셋 ID: 15045638)**는 2000년부터 2024년까지 "
+        "고속도로의 연도별 사고건수·사망자수·부상자수를 제공하는 CSV 파일입니다. "
+        "포털 상세 페이지에는 전체 26행, 컬럼은 `연도`, `사고`, `사망`, `부상`으로 안내되어 있습니다."
+    )
+    st.markdown(
+        "[공공데이터포털에서 2000~2024년 고속도로 사고 원본 CSV 확인·다운로드](https://www.data.go.kr/data/15045638/fileData.do)"
+    )
+    st.warning(
+        "이 데이터는 2000~2024년이라는 기간과 컬럼 정의·전체 행 수는 확인했지만, "
+        "이 세션에서 포털 미리보기에 실제 26개 수치 행이 표시되지 않았습니다. "
+        "따라서 그래프에 임의의 연도별 수치를 만들어 넣지 않았습니다. 원본 CSV 행을 확인할 수 있게 되면 "
+        "현재 전국 사고 통계와 별도의 '고속도로 장기 추세' 그래프로 추가하는 것이 정확합니다."
+    )
+
+    extra_sources = pd.DataFrame(
+        [
+            ["15045638", "한국도로공사", "2000~2024", "연도·사고·사망·부상", "고속도로 장기 추세 비교"],
+            ["15070271", "한국도로교통공단", "2025", "도로종류·발생월·사고·사망·중상·경상·부상신고", "고속국도/일반국도 등 도로종류별 비교"],
+            ["15070339", "한국도로교통공단", "최근 5년", "발생년·사고·사망·중상·경상·부상신고", "전국 연도별 추이 비교"],
+        ],
+        columns=["데이터셋 ID", "제공기관", "기준 기간", "확인된 주요 컬럼", "추가 분석 아이디어"],
+    )
+    st.dataframe(extra_sources, use_container_width=True, hide_index=True)
 
     st.markdown("#### 내장된 데이터 확인 및 CSV 저장")
     with st.expander("어린이보호구역 5개 연도 데이터"):
@@ -716,6 +953,8 @@ elif menu == "📚 데이터 출처·원본 확인":
         4. 사고유형별 통계와 사고유형별 월별 통계는 데이터포털 미리보기에서 확인 가능한 일부 행만 앱에 내장했습니다.
         5. 제공된 통계에는 사고 위치 좌표, 교통안전시설 위치, 차량 통행량이 없으므로 지도 기반 위험지역 분석이나 인과관계 분석은 할 수 없습니다.
         6. 사망자 100건당 비율은 사고건수 대비 단순 비율이며, 교통량·보행량을 보정한 개인별 사고 위험률이 아닙니다.
+        7. 고속도로 2000~2024 데이터(15045638)는 포털에서 기간·컬럼·전체 행 수를 확인했지만, 실제 수치 행을 미리보기에서 읽을 수 없어 현재 그래프에는 포함하지 않았습니다.
+        8. 도로종류별 월별 데이터(15070271), 최근 5년 전국 통계(15070339)는 분석 가치가 높아 원본 링크와 메타데이터를 추가했으며, 공개 페이지에서 숫자 행을 확인하지 못한 지표는 차트에 임의로 넣지 않았습니다.
         """
     )
 
@@ -725,7 +964,7 @@ elif menu == "📚 데이터 출처·원본 확인":
 # -----------------------------------------------------------------------------
 st.divider()
 st.caption(
-    "자료 제공: 한국도로교통공단 · 공공데이터포털 | "
+    "자료 제공: 한국도로교통공단·한국도로공사 · 공공데이터포털 | "
     "그래프: Plotly | 데이터 처리: pandas | "
     "본 앱은 공개 통계의 교육·탐구 목적 시각화이며, 특정 도로의 실시간 위험도나 최적 통학 경로를 보증하지 않습니다."
 )
